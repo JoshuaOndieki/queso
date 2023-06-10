@@ -1,0 +1,13 @@
+<div id="panel">
+    <div id="profile" *ngIf="user$ | async as user">
+
+    </div>
+    <div id="panel-questions">
+        Questions here
+    </div>
+    <div id="panel-users">
+        Users here
+    </div>
+</div>
+
+<router-outlet></router-outlet>

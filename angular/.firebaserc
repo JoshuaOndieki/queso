@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "app-queso": {
+      "hosting": {
+        "queso": [
+          "app-queso"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "app-queso"
+  }
+}

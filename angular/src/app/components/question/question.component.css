@@ -1,0 +1,7 @@
+#board {
+    flex: 1;
+    /* background: url(../../../assets/dots.svg); */
+    padding: 1rem;
+    background-image: radial-gradient(#F6F6F7 3px, transparent 1px);
+    background-size: 28px 28px;
+}

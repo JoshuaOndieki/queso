@@ -1,0 +1,5 @@
+<div *ngIf="user$ | async as user" id="profile-icon" [routerLink]="['/user',user.uid]">
+    <img id="header-avatar" [src]="user.photoURL" alt="avatar">
+    <div>{{user.displayName}}</div>
+</div>
+<div id="signout-btn" (click)="signOut()" *ngIf="user$ | async">sign out</div>

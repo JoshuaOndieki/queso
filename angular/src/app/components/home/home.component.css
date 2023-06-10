@@ -1,0 +1,16 @@
+
+
+:host {
+    border-top: 2px solid #F7F8F9;
+}
+
+#panel {
+    border-right: 2px solid #F7F8F9;
+    padding: 1rem;
+    min-height: 30svh;
+    width: 300px;
+}
+
+#panel, #board {
+    height: 100%;
+}
