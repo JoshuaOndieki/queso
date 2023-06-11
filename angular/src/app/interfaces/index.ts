@@ -16,8 +16,14 @@ export interface IanswerState {
 }
 
 export interface Iuser {
-    name:string
+    displayName:string
     email:string
-    id:string
-    avatar:string
+    uid:string
+    photoURL:string
+}
+
+export interface Iquestion {
+    title:string
+    description:string
+    id?:string
 }

@@ -1,13 +1,20 @@
-<div id="panel">
-    <div id="profile" *ngIf="user$ | async as user">
-
+<div id="panel" *ngIf="user$ | async as authUser">
+    <div id="panel-questions" *ngIf="questions$ | async as questions">
+        <h2>Interview Questions</h2>
+        <div *ngFor="let question of questions">
+            <div class="question-title">{{question.title}}</div>
+            <div class="question-desc truncate">{{question.description}}</div>
+        </div>
     </div>
-    <div id="panel-questions">
-        Questions here
-    </div>
-    <div id="panel-users">
-        Users here
+    <hr>
+    <div id="panel-users" *ngIf="users$ | async as users">
+        <h2>Peers</h2>
+        <div *ngFor="let user of users | removeAuthUser: authUser" class="list-user" [routerLink]="['/user',user.uid]" routerLinkActive="active-user">
+            <img [src]="user.photoURL" alt="">
+            <div>{{user.displayName}}</div>
+        </div>
     </div>
 </div>
+
 
 <router-outlet></router-outlet>

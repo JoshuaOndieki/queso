@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import {AngularFireModule} from '@angular/fire/compat'
 // import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-// import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 // import { provideAuth,getAuth } from '@angular/fire/auth';
 // import { provideDatabase,getDatabase } from '@angular/fire/database';
-// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 // import { provideFunctions,getFunctions } from '@angular/fire/functions';
 // import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 // import { providePerformance,getPerformance } from '@angular/fire/performance';
@@ -18,6 +18,10 @@ import { environment } from '../environments/environment';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { HeaderComponent } from './components/header/header.component';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 
 @NgModule({
   declarations: [
@@ -30,17 +34,19 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFireModule,
+    // AngularFirestoreModule
     // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    // provideAnalytics(() => getAnalytics()),
+    provideAnalytics(() => getAnalytics()),
     // provideAuth(() => getAuth()),
     // provideDatabase(() => getDatabase()),
-    // provideFirestore(() => getFirestore()),
+    provideFirestore(() => getFirestore()),
     // provideFunctions(() => getFunctions()),
     // provideMessaging(() => getMessaging()),
     // providePerformance(() => getPerformance()),
     // provideRemoteConfig(() => getRemoteConfig()),
-    // provideStorage(() => getStorage())
+    // provideStorage(() => getStorage()),
+    DragDropModule,
+    BrowserAnimationsModule
   ],
   providers: [
     // ScreenTrackingService,UserTrackingService

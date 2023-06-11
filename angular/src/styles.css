@@ -1,11 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap');
+
+
+
 * {
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
     width: 100%;
-    min-height: 100svh;
+    height: 100svh;
     margin: 0;
 }
 
@@ -13,7 +18,7 @@ app-root {
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100svh;
+    height: 100svh;
 }
 
 app-not-found, app-landingpage, app-home {
@@ -21,8 +26,70 @@ app-not-found, app-landingpage, app-home {
     flex: 1;
 }
 
-app-not-found, app-landingpage {
+app-not-found, app-landingpage, app-landingpage>div {
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
+#board, app-landingpage {
+    flex: 1;
+    /* background: url(../../../assets/dots.svg); */
+    padding: 1rem;
+    background-image: radial-gradient(#F6F6F7 3px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+app-landingpage>div {
+    width: min(400px, 80svw);
+    border: 2px solid #ddd;
+    filter: drop-shadow(0 0 10px #ddd);
+    display: flex;
+    background-color: #ddd;
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+
+/* For WebKit browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+  }
+  
+  /* For Firefox */
+  /* Note: Firefox does not support customizing the scroll bar width */
+  /* You can only customize the background color and border-radius */
+  /* The scroll bar will use the default width in Firefox */
+  
+  /* For IE and Edge */
+  /* Note: Internet Explorer and Microsoft Edge use a different syntax */
+  /* You can only customize the color of the scroll bar */
+  
+  /* Hide the scroll bar track */
+  /* This will make the scroll bar smaller in IE and Edge */
+  /* However, it will also remove the track from the scroll bar */
+  /* So the scroll bar will appear invisible, but still functional */
+  *::-ms-backdrop, *::-ms-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Customize the scroll bar thumb */
+  /* This will make the scroll bar smaller in IE and Edge */
+  /* The thumb will have a background color and border-radius */
+  *::-ms-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

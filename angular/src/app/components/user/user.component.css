@@ -1,0 +1,235 @@
+#profile-photo {
+    border-radius: 50%;
+}
+
+#profile-display-name {
+    font-size: 1.5rem;
+}
+
+:host {
+    /* padding: 1rem; */
+    flex: 1;
+    display: flex;
+    overflow: auto;
+}
+
+#board {
+    display: flex;
+    flex: 1;
+    position: relative;
+    overflow: auto;
+}
+
+#profile {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+#feedback {
+    width: 310px;
+    /* box-shadow: 0 0 2px #dbdcdd; */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.4), 0 6px 6px rgba(0,0,0,0.4);
+    overflow: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 0.5rem;
+    background-color: white;
+    height: max-content;
+    flex-direction: column;
+    position: absolute;
+    top: 1rem;
+    right: 3svw;
+    height: 350px;
+    z-index: 999;
+    resize: vertical;
+}
+
+#feedback:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6), 0 5px 5px rgba(0,0,0,0.6);
+  }
+
+#no-feedback {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+#no-answer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    color: grey;
+    font-style: oblique;
+}
+
+#add-section-btn, .add-part-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #F3F4F6;
+    width: max-content;
+    background-color: whitesmoke;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 1;
+}
+
+#add-section-btn:hover, .add-part-btn:hover {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+}
+
+#answer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.section {
+    min-height: 4rem;
+    border: 2px dashed black;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    /* width: max-content; */
+    flex-direction: column;
+    padding: 5px;
+
+}
+
+.section-head, .part-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
+}
+
+.section-parts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+#feedback-title {
+    width: 100%;
+}
+
+.movable {
+    cursor: move;
+}
+
+.part {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 2px 2px rgb(232, 227, 227);
+    flex: 1;
+}
+
+.add-part-btn {
+    justify-self: flex-end;
+}
+
+.part-content {
+    min-width: 350px;
+    max-width: 90svw;
+}
+
+#comments {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 5px;
+}
+
+.comment {
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 2px 2px rgb(232, 227, 227);
+    border-radius: 0.5rem;
+    width: 80%;
+}
+
+.my-comment {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.commenter-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: small;
+}
+
+.commenter-avatar {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+    transition: transform 250ms cubic-bezier(0, 0, 0.3, 1);
+}
+  
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.3, 1);
+}
+
+.no-edit {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    flex: 1;
+    font-size: 1rem;
+}
+
+
+textarea {
+    width: 100%;
+    height: max-content;
+    /* font-weight: 700; */
+    font-size: 1.3rem!important;
+}
+
+.del-btn {
+    color: salmon;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.section-desc, .part-desc {
+    /* font-size: 1.2rem; */
+    /* font-weight: bold; */
+}
+
+.edit-mode {
+    border: 1.5px solid salmon;
+    border-radius: 5px;
+}
+
+#response-preview {
+    font-size: large;
+}

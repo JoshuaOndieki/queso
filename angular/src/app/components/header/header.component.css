@@ -1,7 +1,7 @@
 :host {
     display: flex;
     justify-content: flex-end;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     gap: 2rem;
     align-items: center;
 }
@@ -9,6 +9,7 @@
 #signout-btn {
     text-decoration: underline;
     cursor: pointer;
+    min-width: max-content;
 }
 
 #profile-icon {
@@ -28,4 +29,8 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
+}
+
+#header-profile-name {
+    width: max-content;
 }
