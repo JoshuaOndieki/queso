@@ -1,0 +1,81 @@
+<div id="board" *ngIf="user$ | async as user">
+    <div id="profile">
+        <div id="profile-info">
+            <img [src]="user.photoURL" alt="avatar" id="profile-photo">
+            <div id="profile-display-name">{{user.displayName}} <span *ngIf="(authUser$ | async)?.uid === user.uid">(me)</span></div>
+        </div>
+        <div id="add-section-btn" *ngIf="(authUser$ | async)?.uid === user.uid" (click)="addSection()">ADD SECTION</div>
+        <div><button (click)="changeNav()">click to view {{nav === 'sections' ? 'preview' : 'sections'}}</button></div>
+        <ng-container *ngIf="nav === 'preview'; then preview; else sections"></ng-container>
+            <ng-template #preview>
+                <textarea name="" id="response-preview" cols="30" rows="10" readonly contenteditable="false" [value]="previewResponse"></textarea>
+            </ng-template>
+            <ng-template #sections>
+                <div id="answer" *ngIf="answer$ | async as answer; else noAnswer" >
+                    <ng-container >
+                    <div *ngFor="let section of answer.sections; index as sectionIndex" class="section movable">
+                        <div class="section-head">
+                            <input (click)="toggleEditMode($event)" class="section-desc" class="no-edit" [value]="section.description" contenteditable="false" readonly (change)="onChange('sec-desc', {
+                                section:sectionIndex,
+                                event:$event
+                            })">
+                            <div class="del-btn" (click)="delete('section',{sectionIndex})"  *ngIf="(authUser$ | async)?.uid === user.uid">delete</div>
+                        </div>
+                        <div class="section-parts" cdkDropList (cdkDropListDropped)="drop($event, answer, 'part', sectionIndex)" [cdkDropListDisabled]="(authUser$ | async)?.uid !== user.uid">
+                            <div cdkDrag *ngFor="let part of section.parts; index as partIndex" class="part">
+                                <div class="part-head">
+                                    <input (click)="toggleEditMode($event)" class="part-desc" class="no-edit" [value]="part.description" contenteditable="false" readonly (change)="onChange('part-desc', {
+                                        section:sectionIndex,
+                                        part:partIndex,
+                                        event:$event
+                                    })">
+                                    <div class="del-btn" (click)="delete('part', {sectionIndex,partIndex})"  *ngIf="(authUser$ | async)?.uid === user.uid">delete</div>
+                                </div>
+                                <div class="part-content">
+                                    <textarea rows="5" (click)="toggleEditMode($event)" class="no-edit" type="text" name="" id="" [value]="part.content" contenteditable="false" readonly (change)="onChange('part-content', {
+                                        section:sectionIndex,
+                                        part:partIndex,
+                                        event:$event
+                                    })"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-part-btn" (click)="addPart(sectionIndex)" *ngIf="(authUser$ | async)?.uid === user.uid">ADD PART</div>
+                    </div>
+                </ng-container>
+                </div>
+            </ng-template>
+        
+        <ng-template #noAnswer>
+            <div id="no-answer">
+                <div>
+                    <span *ngIf="(authUser$ | async)?.uid === user.uid">You have not</span><span *ngIf="(authUser$ | async)?.uid !== user.uid">{{user.displayName.split(' ')[0]}} has not</span>&nbsp;<span>responded to the interview questions.</span>
+                </div>
+                <p>A response is made up of sections. Start by adding sections in the order in which you'll respond to the questions. A section can have multiple parts which can be important or optional.</p>
+            </div>
+        </ng-template>
+        
+    </div>
+    
+    <div #feedback id="feedback" cdkDrag cdkDragBoundary="#board">
+        <div cdkDragHandle cdkScrollable id="feedback-title" class="movable">Feedback</div>
+        <div *ngIf="feedbacks$ | async as feedbacks; else noFeedbacks" id="comments">
+            <div *ngFor="let feedback of feedbacks.feedbacks" class="comment" [ngClass]="{'my-comment': ((authUser$ | async)?.uid === feedback.by)}">
+                <div>{{feedback.comment}}</div>
+                <div style="display:flex; flex-direction: column;">
+                    <div *ngIf="getUserInfo(feedback.by) as commenter" class="commenter-info"><img class="commenter-avatar" [src]="commenter.photoURL" alt="avatar"><div class="commenter-display">{{commenter.displayName}}</div></div>
+                    <span style="color: grey; font-size: xx-small; align-self: flex-end;">{{feedback.on}}</span>
+                </div>
+            </div>
+        </div>
+        <form (ngSubmit)="shareFeedBack(comment, authUser.uid)" *ngIf="authUser$ | async as authUser">
+            <input type="text" name="feedback" id="feedback-input" #comment>
+            <input type="submit" value="share feedback">
+        </form>
+
+        <ng-template #noFeedbacks>
+            <div id="no-feedback">{{((authUser$ | async)?.uid === user.uid) ? 'You have' : user.displayName.split(' ')[0] + ' has '}} not received any feedback yet.</div>
+        </ng-template>
+    </div>
+</div>
+    
